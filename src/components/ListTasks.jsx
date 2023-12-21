@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
+import { axiosSecure } from "../hooks/useAxiosSecure";
 
 const ListTasks = ({ tasks, setTasks, toDo }) => {
   // const { title, _id } = item;
@@ -17,6 +18,28 @@ const ListTasks = ({ tasks, setTasks, toDo }) => {
     setCompleted(fCompleted);
   }, [toDo]);
 
+  const handleTaskStatusUpdate = async (taskId, newStatus) => {
+    try {
+      // Make an HTTP request to update the task status in the database
+      await axiosSecure.put(`/tasks/${taskId}/status`, { status: newStatus });
+
+      // Update the local state to trigger a re-render
+      setTasks((prev) => {
+        const nTasks = prev.map((t) => {
+          if (t.id === taskId) {
+            return { ...t, status: newStatus };
+          }
+          return t;
+        });
+        return nTasks;
+      });
+    } catch (error) {
+      // Handle errors and edge cases
+      console.error("Error updating task status:", error);
+      // You may want to show a user-friendly error message here
+    }
+  };
+
   const statuses = ["todo", "ongoing", "completed"];
 
   return (
@@ -30,6 +53,7 @@ const ListTasks = ({ tasks, setTasks, toDo }) => {
           todos={todos}
           onGoing={onGoing}
           completed={completed}
+          onTaskStatusUpdate={handleTaskStatusUpdate}
         />
       ))}
     </div>
@@ -38,13 +62,13 @@ const ListTasks = ({ tasks, setTasks, toDo }) => {
 
 export default ListTasks;
 
-const Section = ({ status, tasks, setTasks, todos, onGoing, completed }) => {
+const Section = ({ status, tasks, setTasks, todos, onGoing, completed, onTaskStatusUpdate }) => {
 
-    const [{ isDer }, drop] = useDrop(() => ({
+    const [{ isOver }, drop] = useDrop(() => ({
        accept: "task",
-        drop: (item) => addItemSection,
+        drop: (item) => addItemSection(item.id),
         collect: (monitor) => ({
-          isDragging: !!monitor.isDragging()
+          isOver: !!monitor.isOver()
         })
       }))
 
@@ -65,8 +89,23 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, completed }) => {
     tasksToMap = completed;
   }
 
+  const addItemSection = (id) => {
+    // Update the task status locally
+    setTasks((prev) => {
+      const nTasks = prev.map((t) => {
+        if (t.id === id) {
+          // Call the function to update the task status in the database
+          onTaskStatusUpdate(id, status);
+          return { ...t, status: status };
+        }
+        return t;
+      });
+      return nTasks;
+    });
+  };
+
   return (
-    <div className={`w-64`}>
+    <div className={`w-64 rounded-md ${isOver ? "bg-slate-200" : ""}`} ref={drop}>
       <Header text={text} bg={bg} count={tasksToMap.length}></Header>
       {tasksToMap.length > 0 &&
         tasksToMap.map((task) => (

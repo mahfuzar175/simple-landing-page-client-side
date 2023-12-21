@@ -21,7 +21,7 @@ const Navbar = () => {
         <NavLink to="/">HOME</NavLink>
       </li>
       <li>
-        <NavLink to="/story">BLOGS</NavLink>
+        <NavLink to="/blog">BLOGS</NavLink>
       </li>
       {user ? (
         <>

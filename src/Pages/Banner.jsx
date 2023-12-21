@@ -7,17 +7,15 @@ const Banner = () => {
         className="hero min-h-screen"
         style={{
           backgroundImage:
-            "url(https://daisyui.com/images/stock/photo-1507358522600-9f71e620c44e.jpg)",
+            "url(https://i.ibb.co/sbH6T2y/management.jpg)",
         }}
       >
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center text-neutral-content">
           <div className="max-w-md">
-            <h1 className="mb-5 text-5xl font-bold">Welcome</h1>
+            <h1 className="mb-5 text-4xl font-bold">Welcome To <br /><span className="text-pink-500 text-5xl">QuickTask Hub</span></h1>
             <p className="mb-5">
-              Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-              excepturi exercitationem quasi. In deleniti eaque aut repudiandae
-              et a id nisi.
+            Efficient task management website, boasting a user-friendly interface for seamless organization and prioritization.
             </p>
             <Link to='/dashboard'><button className="btn btn-primary">Let's Explore</button></Link>
           </div>
