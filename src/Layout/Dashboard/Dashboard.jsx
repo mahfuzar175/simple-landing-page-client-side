@@ -1,15 +1,18 @@
-import { useContext } from "react";
+import { useState } from "react";
 import {
     FaHome,
   } from "react-icons/fa";
   import { FcHome } from "react-icons/fc";
-  import { NavLink, Outlet } from "react-router-dom";
-import { AuthContext } from "../../providers/AuthProvider";
+  import { NavLink } from "react-router-dom";
+import CreateTask from "../../components/CreateTask";
+import ListTasks from "../../components/ListTasks";
+import useAuth from './../../hooks/useAuth';
 
   const Dashboard = () => {
-    const { user } = useContext(AuthContext);
+    const { user } = useAuth();
     const userName = user.displayName;
     const userProfilePic = user.photoURL;
+    const [tasks, setTasks] = useState([]);
   
     return (
       <div className="flex">
@@ -40,8 +43,9 @@ import { AuthContext } from "../../providers/AuthProvider";
             </li>
           </ul>
         </div>
-        <div className="flex-1 p-8">
-          <Outlet></Outlet>
+        <div className="w-screen h-screen pt-8 flex flex-col items-center gap-8">
+          <CreateTask tasks={tasks} setTasks={setTasks}></CreateTask>
+          <ListTasks tasks={tasks} setTasks={setTasks}></ListTasks>
         </div>
       </div>
     );

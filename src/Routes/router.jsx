@@ -7,6 +7,7 @@ import Login from "../Pages/Login/Login";
 import SignUp from "../Pages/SignUp/SignUp";
 import PrivateRoute from "./PrivateRoute";
 import Dashboard from "../Layout/Dashboard/Dashboard";
+import CreateTask from "../components/CreateTask";
 
 
   export const router = createBrowserRouter([
@@ -31,5 +32,9 @@ import Dashboard from "../Layout/Dashboard/Dashboard";
     {
         path: 'dashboard',
         element: <PrivateRoute><Dashboard></Dashboard></PrivateRoute>
+    },
+    {
+      path: 'createTask',
+      element: <PrivateRoute><CreateTask></CreateTask></PrivateRoute>
     }
   ]);
