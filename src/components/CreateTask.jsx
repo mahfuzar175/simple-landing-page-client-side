@@ -1,15 +1,15 @@
-// import { useState } from "react";
+
 import { useForm } from "react-hook-form";
 import useAuth from "../hooks/useAuth";
 import useAxiosSecure from "../hooks/useAxiosSecure";
-import Swal from "sweetalert2"; // Assuming you are using SweetAlert2
-// import { v4 as uuidv4 } from 'uuid';
+import Swal from "sweetalert2";
 
-const CreateTask = ({ tasks, setTasks }) => {
-  const { user } = useAuth();
-  const axiosSecure = useAxiosSecure();
-  const { register, handleSubmit, reset } = useForm();
 
+const CreateTask = ({ onTaskAdded }) => {
+    const {user} = useAuth();
+    const axiosSecure = useAxiosSecure();
+
+  const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
     console.log(data);
     if (user && user.email) {
@@ -32,8 +32,7 @@ const CreateTask = ({ tasks, setTasks }) => {
               showConfirmButton: false,
               timer: 1500,
             });
-            // Reset the form after successful submission
-            reset();
+            onTaskAdded();
           } else {
             // Handle server response indicating failure
             Swal.fire({
@@ -54,7 +53,6 @@ const CreateTask = ({ tasks, setTasks }) => {
         });
     }
   };
-
 
   return (
     <div>

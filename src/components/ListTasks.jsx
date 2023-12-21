@@ -1,10 +1,10 @@
 
-const ListTasks = () => {
-    return (
-        <div>
-            <h2>list</h2>
-        </div>
-    );
-};
+// const ListTasks = ({item}) => {
+//     return (
+//         <div>
+//             <h2>{item.title}</h2>
+//         </div>
+//     );
+// };
 
-export default ListTasks;
+// export default ListTasks;
