@@ -19,6 +19,7 @@ const CreateTask = ({ onTaskAdded }) => {
         descriptions: data.descriptions,
         deadlines: data.deadlines,
         priority: data.priority,
+        status: "todo"
       };
 
       axiosSecure.post("/tasks", listItems)
@@ -63,7 +64,6 @@ const CreateTask = ({ onTaskAdded }) => {
             <span className="label-text">Title*</span>
           </div>
           <input
-        //   onChange={(data) => setTask({...task, id: uuidv4(), name: data.target.value})}
             type="text"
             placeholder="Title Name"
             {...register("title")}

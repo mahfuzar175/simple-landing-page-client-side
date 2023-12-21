@@ -6,6 +6,7 @@ import CreateTask from "../../components/CreateTask";
 import useAuth from "./../../hooks/useAuth";
 
 import useToDoList from "../../hooks/useToDoList";
+import ListTasks from "../../components/ListTasks";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -52,14 +53,11 @@ const Dashboard = () => {
           setTasks={setTasks}
           onTaskAdded={handleTaskAdded}
         ></CreateTask>
+        
+
+
         <div className="flex flex-col gap-4">
-          {toDo.map((item, index) => (
-            <h2 key={item._id}>
-              <h2 className="border p-4 bg-slate-500 px-24">
-                {item.title}
-              </h2>
-            </h2>
-          ))}
+            <ListTasks tasks={tasks} setTasks={setTasks} toDo={toDo}></ListTasks>
         </div>
       </div>
     </div>
