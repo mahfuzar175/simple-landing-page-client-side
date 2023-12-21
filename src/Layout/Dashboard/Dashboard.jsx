@@ -7,6 +7,8 @@ import useAuth from "./../../hooks/useAuth";
 
 import useToDoList from "../../hooks/useToDoList";
 import ListTasks from "../../components/ListTasks";
+import { DndProvider } from 'react-dnd'
+import { HTML5Backend } from 'react-dnd-html5-backend'
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -47,19 +49,19 @@ const Dashboard = () => {
           </li>
         </ul>
       </div>
+      <DndProvider backend={HTML5Backend}>
       <div className="w-screen min-h-screen pt-8 flex flex-col items-center gap-8">
         <CreateTask
           tasks={tasks}
           setTasks={setTasks}
           onTaskAdded={handleTaskAdded}
         ></CreateTask>
-        
-
 
         <div className="flex flex-col gap-4">
             <ListTasks tasks={tasks} setTasks={setTasks} toDo={toDo}></ListTasks>
         </div>
       </div>
+      </DndProvider>
     </div>
   );
 };
