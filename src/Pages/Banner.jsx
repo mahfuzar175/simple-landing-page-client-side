@@ -19,7 +19,7 @@ const Banner = () => {
               excepturi exercitationem quasi. In deleniti eaque aut repudiandae
               et a id nisi.
             </p>
-            <Link to='/login'><button className="btn btn-primary">Explore more</button></Link>
+            <Link to='/dashboard'><button className="btn btn-primary">Let's Explore</button></Link>
           </div>
         </div>
       </div>

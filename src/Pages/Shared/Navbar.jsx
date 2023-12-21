@@ -70,8 +70,8 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="font-serif flex justify-center items-center">
-            <a className="normal-case font-serif font-bold text-lg">
-              TASK
+            <a className="normal-case font-serif font-extrabold text-xl">
+            QuickTask Hub
             </a>
           </a>
         </div>
