@@ -1,8 +1,8 @@
 import { NavLink } from "react-router-dom";
-// import icon from "../../assets/Icon/Travi-rvg.png";
 import userDefaultPic from '../../assets/login/user.png';
 import { useContext} from "react";
 import { AuthContext } from "../../providers/AuthProvider";
+import icon from "../../assets/login/i.png"
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext);
   const userName = user ? user.displayName : "";
@@ -70,8 +70,9 @@ const Navbar = () => {
             </ul>
           </div>
           <a className="font-serif flex justify-center items-center">
-            <a className="normal-case font-serif font-extrabold text-xl">
-            QuickTask Hub
+            <img src={icon} alt="icon" />
+            <a className="normal-case font-serif font-bold text-xl">
+            QuickTaskHub
             </a>
           </a>
         </div>
