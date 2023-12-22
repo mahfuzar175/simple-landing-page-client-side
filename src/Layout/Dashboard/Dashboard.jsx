@@ -9,6 +9,7 @@ import useToDoList from "../../hooks/useToDoList";
 import ListTasks from "../../components/ListTasks";
 import { DndProvider } from 'react-dnd'
 import { HTML5Backend } from 'react-dnd-html5-backend'
+import { Helmet } from "react-helmet-async";
 
 const Dashboard = () => {
   const { user } = useAuth();
@@ -24,6 +25,9 @@ const Dashboard = () => {
 
   return (
     <div className="flex">
+       <Helmet>
+            <title>QuickTask Hub | Dashboard</title>
+            </Helmet>
       <div className="w-64 min-h-screen bg-gray-100 border border-gray-400 rounded">
         <h2 className="text-center w-full font-bold text-xl bg-pink-600 text-white font-serif border p-4 mb-4">
           QuickTask Hub
