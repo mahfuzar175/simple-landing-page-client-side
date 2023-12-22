@@ -88,11 +88,11 @@ const Navbar = () => {
       </label>
       <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-black bg-opacity-90 rounded-box w-52">
         <li>
-          <a className="justify-between">
+          <a className="justify-between text-xs">
             {userName}
           </a>
         </li>
-        {/* <li><NavLink to="/dashboard/dashboardCover">Dashboard</NavLink></li> */}
+        <li><NavLink to="/dashboard">Dashboard</NavLink></li>
         {user ? (
         <>
           {/* <li><span>{user?.displayName}</span></li> */}

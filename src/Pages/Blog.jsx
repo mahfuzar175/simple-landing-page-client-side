@@ -8,7 +8,7 @@ const Blog = () => {
 	</div>
 	<div className="flex justify-center items-center">
 	<div className="grid grid-cols-1 items-center justify-center mx-auto lg:grid-cols-3  lg:justify-evenly lg:px-10">
-		<div className="flex flex-col max-w-sm mx-4 my-6  border border-gray-400">
+		<div  className="flex flex-col max-w-sm mx-4 my-6  border border-gray-400">
 			<div className="px-4 py-12 rounded-t-lg sm:px-8 md:px-12 dark:bg-gray-900">
 				<p className="relative px-6 py-1 text-lg italic text-center dark:text-gray-100">
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="currentColor" className="w-8 h-8 dark:text-violet-400">

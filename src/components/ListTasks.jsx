@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
-import { axiosSecure } from "../hooks/useAxiosSecure";
+import { AiOutlineEdit } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
-const ListTasks = ({ tasks, setTasks, toDo }) => {
-  // const { title, _id } = item;
+const ListTasks = ({ tasks, setTasks, toDo, }) => {
+  // const { _id } = item;
   const [todos, setTodos] = useState([]);
   const [onGoing, setOnGoing] = useState([]);
   const [completed, setCompleted] = useState([]);
@@ -73,7 +74,7 @@ const Section = ({ status, tasks, setTasks, todos, onGoing, completed }) => {
         if(t.id === id){
             return {...t, status: status}
         }
-        return t
+        return nTask;
        })
        return tasks;
     })
@@ -119,8 +120,8 @@ const Task = ({ task, tasks, setTasks }) => {
       }))
 
   return (
-    <div ref={drag} className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab ${isDragging ? "opacity-25" : "opacity-100"}`}>
-      {task.title}
+    <div ref={drag} className={`w-60 relative p-4 mt-4 shadow-md rounded-md cursor-grab border ${isDragging ? "opacity-25" : "opacity-100"}`}>
+      <div className="flex justify-between"><h2 className="font-bold">{task.title}</h2> <Link to={`/update/${task._id}`}><button><AiOutlineEdit /></button></Link></div>
     </div>
   );
 };

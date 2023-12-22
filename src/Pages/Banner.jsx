@@ -17,7 +17,7 @@ const Banner = () => {
             <p className="mb-5">
             Efficient task management website, boasting a user-friendly interface for seamless organization and prioritization.
             </p>
-            <Link to='/dashboard'><button className="btn btn-primary">Let's Explore</button></Link>
+            <Link to='/dashboard'><div data-aos="fade-left" data-aos-duration="500"><button className="btn btn-primary">Let's Explore</button></div></Link>
           </div>
         </div>
       </div>
